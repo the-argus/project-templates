@@ -17,3 +17,11 @@ This is a basic flake which is meant for packaging one piece of software. Run:
 ```bash
 nix flake init --template github:the-argus/project-templates#nix
 ```
+
+## Nim
+
+This is a generic project which includes nix packaging. Run:
+
+```bash
+nix flake init --template github:the-argus/project-templates#nim
+```
