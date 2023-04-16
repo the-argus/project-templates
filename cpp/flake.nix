@@ -19,7 +19,7 @@
       system.x86_64-linux
     ];
   in
-    flake-utils.lib.eachsystem supportedSystems (system: let
+    flake-utils.lib.eachSystem supportedSystems (system: let
       pkgs = import nixpkgs {inherit system;};
     in {
       packages = {
@@ -27,7 +27,7 @@
         default = self.packages.${system}.genericPackage;
       };
 
-      devShell.${system} =
+      devShell =
         pkgs.mkShell.override
         {
           stdenv = pkgs.clangStdenv;
