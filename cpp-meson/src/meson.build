@@ -2,13 +2,6 @@ project('generic', 'c', default_options: ['default_library=static', 'buildtype=d
 
 cc = meson.get_compiler('c')
 
-# linker arguments such as -lm
-link_args = [ ]
-# add cpp if necessary
-if build_machine.system() != 'windows' and build_machine.system() != 'cygwin'
-  link_args += '-lstdc++'
-endif
-
 # collect source files
 source_file_names = [
   'main.cpp'
@@ -19,6 +12,6 @@ foreach file : source_file_names
 endforeach
 
 # collect headers
-my_headers = declare_dependency(include_directories : include_directories(includes))
+my_headers = declare_dependency(include_directories : include_directories(['.']))
 
-executable('generic', sources, dependencies: [ my_headers ], link_args: link_args)
+executable('generic', sources, dependencies: [ my_headers ], link_args: [])

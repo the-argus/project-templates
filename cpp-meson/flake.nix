@@ -23,7 +23,10 @@
       pkgs = import nixpkgs {inherit system;};
     in {
       packages = {
-        genericPackage = pkgs.callPackage ./. {name = "generic";};
+        genericPackage = pkgs.callPackage ./. {
+          name = "generic";
+          stdenv = pkgs.clangStdenv;
+        };
         default = self.packages.${system}.genericPackage;
       };
 

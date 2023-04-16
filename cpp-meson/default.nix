@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   pname = name;
   version = "0.0.0";
 
-  src = ./.;
+  src = ./src;
 
   nativeBuildInputs = [
     pkg-config
