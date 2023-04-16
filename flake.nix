@@ -23,6 +23,10 @@
         path = ./nix;
         description = "A nix flake meant to package one piece of software.";
       };
+      nim = {
+        path = ./nim;
+        description = "A generic nim project which includes nix packaging.";
+      };
     };
 
     formatter = pkgs.alejandra;

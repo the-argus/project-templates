@@ -20,7 +20,7 @@ nix flake init --template github:the-argus/project-templates#nix
 
 ## Nim
 
-This is a generic project which includes nix packaging. Run:
+This is a generic nim project which includes nix packaging. Run:
 
 ```bash
 nix flake init --template github:the-argus/project-templates#nim
