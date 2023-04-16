@@ -3,25 +3,28 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
-
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = {
     self,
     nixpkgs,
-    flake-utils,
     ...
-  }:
-    flake-utils.lib.eachsystem
-    (let inherit (flake-utils.lib) system; in [system.aarch64-linux system.x86_64-linux]) (system: let
-      pkgs = import nixpkgs {inherit system;};
-    in {
-      packages = {
-        spicetify = pkgs.callpackage ./pkgs {};
-        default = self.packages.${system}.spicetify;
+  }: let
+    # just used for the formatter
+    pkgs = import nixpkgs {system = "x86_64-linux";};
+  in {
+    templates = {
+      default = self.templates.nix;
+      cpp = {
+        path = ./cpp;
+        description = "A basic CPP project using CMake.";
       };
+      nix = {
+        path = ./nix;
+        description = "A nix flake meant to package one piece of software.";
+      };
+    };
 
-      formatter = pkgs.alejandra;
-    });
+    formatter = pkgs.alejandra;
+  };
 }
