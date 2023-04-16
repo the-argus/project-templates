@@ -20,6 +20,10 @@
         path = ./cpp;
         description = "A basic CPP project using CMake.";
       };
+      cpp-meson = {
+        path = ./cpp-meson;
+        description = "A basic CPP project using the Meson build system.";
+      };
       nix = {
         path = ./nix;
         description = "A nix flake meant to package one piece of software.";
