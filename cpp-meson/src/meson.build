@@ -1,6 +1,6 @@
-project('generic', 'c', default_options: ['default_library=static', 'buildtype=debugoptimized', 'warning_level=3'])
+project('generic', 'cpp', default_options: ['default_library=static', 'buildtype=debugoptimized', 'warning_level=3'])
 
-cc = meson.get_compiler('c')
+cc = meson.get_compiler('cpp')
 
 # collect source files
 source_file_names = [
