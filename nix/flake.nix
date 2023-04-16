@@ -24,7 +24,7 @@
       pkgs = import nixpkgs {inherit system;};
     in {
       packages = {
-        genericPackage = pkgs.callpackage ./. {};
+        genericPackage = pkgs.callPackage ./. {};
         default = self.packages.${system}.genericPackage;
       };
 
