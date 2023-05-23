@@ -32,6 +32,10 @@
         path = ./nim;
         description = "A generic nim project which includes nix packaging.";
       };
+      pure-qml = {
+        path = ./pure-qml;
+        description = "Environment for developing a Qt application with only QML and no c++ functionality.";
+      };
     };
 
     formatter.${system} = pkgs.alejandra;
