@@ -24,9 +24,6 @@
       devShell =
         pkgs.mkShell.override
         {
-          stdenv = pkgs.clangStdenv;
-        }
-        {
           packages = with pkgs; [
             # editor
             bear
