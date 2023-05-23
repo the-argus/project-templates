@@ -28,8 +28,14 @@
         }
         {
           packages = with pkgs; [
+            # editor
+            bear
+
+            # build tools
             qt6.qmake
             gnumake
+
+            # deps
             qt6.qtbase.dev
             qt6.qtbase
             qt6.qtdeclarative
