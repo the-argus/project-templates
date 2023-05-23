@@ -32,9 +32,9 @@
         path = ./nim;
         description = "A generic nim project which includes nix packaging.";
       };
-      pure-qml = {
+      qml-qt = {
         path = ./pure-qml;
-        description = "Environment for developing a Qt application with only QML and no c++ functionality.";
+        description = "Environment for developing a Qt application with C++ and Qt.";
       };
     };
 
