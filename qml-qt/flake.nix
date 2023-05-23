@@ -21,25 +21,36 @@
     flake-utils.lib.eachSystem supportedSystems (system: let
       pkgs = import nixpkgs {inherit system;};
     in {
-      devShell =
+      devShell = let
+        qtPackages = with pkgs.qt6; [
+          qt6.qtbase
+          qt6.qtdeclarative
+          qt6.qt5compat
+        ];
+      in
         pkgs.mkShell
         {
-          packages = with pkgs; [
-            # build tools
-            qt6.qmake
-            gnumake
-            cmake
-
-            # deps
-            qt6.qtbase
-            qt6.qtdeclarative
-            qt6.qt5compat
-            qtcreator-qt6
-          ];
+          packages = with pkgs;
+            [
+              # build tools
+              qt6.qmake
+              gnumake
+              cmake
+            ]
+            ++ qtPackages;
 
           shellHook = ''
-            export QT_PLUGIN_PATH=${pkgs.qt6.qtbase}/lib/qt-6/plugins:$QT_PLUGIN_PATH
-            export QML2_IMPORT_PATH=${pkgs.qt6.qtdeclarative}/lib/qt-6/qml
+            for pkg in ${builtins.concatStringsSep " " (map (pkg: "\"${pkg}\"") qtPackages)}; do
+              local pluginDir="$pkg/lib/qt-6/plugins"
+              if [ -d "$pluginDir" ]; then
+                export QT_PLUGIN_PATH="$pluginDir:$QT_PLUGIN_PATH"
+              fi
+
+              local qmlDir="$pkg/lib/qt-6/qml"
+              if [ -d "$qmlDir" ]; then
+                export QML2_IMPORT_PATH="$qmlDir:$QML2_IMPORT_PATH"
+              fi
+            done
           '';
         };
 
