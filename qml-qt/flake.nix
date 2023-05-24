@@ -23,9 +23,9 @@
     in {
       devShell = let
         qtPackages = with pkgs.qt6; [
-          qt6.qtbase
-          qt6.qtdeclarative
-          qt6.qt5compat
+          qtbase
+          qtdeclarative
+          qt5compat
         ];
       in
         pkgs.mkShell
