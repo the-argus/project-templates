@@ -2,7 +2,7 @@
   description = "C++ Hello World";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-23.05";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
